@@ -90,4 +90,89 @@ function task6(){
 //task 7 
 function task7(){
     let arr7 = [];
+    let a;
+    while(true){
+        a = prompt(`Введите число`);
+        if(a == ``){
+            break;
+        }else { 
+            arr7.push(a);
+        }   
+    }
+    document.write(`Несортированный массив: ${arr7}`) ;   
+    let sort_arr7 = [];
+    sort_arr7 = arr7.sort(function(a, b) {
+        return a-b;
+    });
+    document.write(`Отсортированный массив: ${sort_arr7}`);
+}
+
+//task 8
+function task8(){
+    let arr8 = [12, false, `Текст`, 4, 2, -5, 0];
+    document.write(`Исходный массив: ${arr8} </br>`);
+    let rev_arr8 = arr8.reverse();
+    let i = 0;
+    document.write(`Реверсивный массив: `);
+    while(i < arr8.length){
+        document.write(`${rev_arr8[i]}` + ',');
+        i++;
+    }
+}
+
+//task 9
+function task9(){
+    let arr9 = [5, 9, 21, , , 9, 78, , , , 6];
+    let count = 0;
+    for (let i = 0; i < arr9.length; i++){
+        if (arr9[i] == undefined){
+            count++;
+        }
+    }
+    document.write(count);
+} 
+
+//task 10
+function task10(){
+    let arr10_1 = [48,9,0,4,21,2,1,0,8,84,76,8,4,13,2];
+    let arr10_2 = [1,8,0,13,76,8,7,0,22,0,2,3,2];
+    let sum_arr10_1 = sum_btw_nulls(arr10_1);
+    let sum_arr10_2 = sum_btw_nulls(arr10_2);
+    document.write(`Сумма первого массива: ${sum_arr10_1} </br>`);
+    document.write(`Сумма второго массива: ${sum_arr10_2}`);
+}
+
+function sum_btw_nulls(arr){
+    let index = arr.indexOf(0);
+    let last_index = arr.lastIndexOf(0);
+    let sum = 0;
+    for(index; index < last_index; index++){
+        sum += arr[index]
+    }
+    return(sum);
+}
+
+//task 11
+function task11(){
+
+    // В задании использовался символ &nbsp (non-breaking space)
+    // Это специальный символ, который при отображении в браузере выглядит как обычный пробел,
+    // но имеет одну, очень важную особенность. При задании символ &nbsp мы получим заданное
+    // пространство между словами, которое ни в коем случае не будет разорвано при перестроении текста.
+    let height = prompt(`Введите высоту треугольника: `);     
+    let weight = (height - 1);
+
+    let symbol = `^`;      //символы заполнители
+    let space =  `&nbsp`;
+    
+    // В цикле на каждой итерации будет создаваться строка.
+    // В строку сначала вставляются пробелы в кол-ве половины ширины треугольника
+    // затем символы-заполнители и снова пробелы, в том же кол-ве, что и первые
+    // кол-во добавляемых пробелов уменьшается с каждой итерацией.
+    for (let i = 1; i <= height; i++){
+        document.write(
+            space.repeat(weight) + symbol.repeat(i) + space.repeat(weight) +`<br>`
+        );
+        weight--;
+    }
 }
